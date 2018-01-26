@@ -215,6 +215,7 @@ set -o failglob             # Non-matching globs throw errors
 set -o nocaseglob           # Case insensitive globs
 set -o globdots             # Wildcards match dotfiles ("*.sh" => ".foo.sh")
 set -o globstar             # Allow ** for recursive matches ('lib/**/*.rb' => 'lib/a/b/c.rb')
+
 set GLOBIGNORE as a colon-separated list of patterns to be removed from glob matches.
 ```
 
@@ -256,7 +257,7 @@ source "${0%/*}/../share/foo.sh"
 printf
 ------
 ```
-printf "Hello %s, I'm %s" Sven Olga
+printf "Hello %s, I'm %s" Jay Amorin.
 ```
 
 Directory of script
@@ -289,4 +290,22 @@ Heredoc
 cat <<END
 hello world
 END
+```
+
+Parameter expansion
+-------------------
+```
+* Simple usage
+
+echo $PARAMETER
+echo ${PARAMETER}
+
+* Case modification
+
+echo ${PARAMETER^}             # Upper case first letter.
+echo ${PARAMETER^^}            # Upper case all letters.
+echo ${PARAMETER,}             # Lower case first letter.
+echo ${PARAMETER,,}            # Lower case all letters.
+echo ${PARAMETER~}             # Reverse the case of the first letter.
+echo ${PARAMETER~~}            # Reverse the case of all the letters.
 ```
